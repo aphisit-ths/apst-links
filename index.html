@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>apst.local · Aphisit | โปรแกรมเมอร์ ทำแอป เล่าเรื่องเทค</title>
+<meta name="description" content="apst.local (Aphisit) โปรแกรมเมอร์ ทำแอป เล่าเรื่องเทค AI และชีวิตประจำวัน ติดตามได้ทาง TikTok, Instagram, Facebook หรือทักคุยงานทาง LINE และอีเมล">
+<meta name="author" content="Aphisit">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://your-domain.com/">
+<meta name="theme-color" content="#FFFFFF">
+
+<!-- Open Graph (Facebook, LINE, IG DM) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="apst.local">
+<meta property="og:title" content="apst.local · Aphisit">
+<meta property="og:description" content="โปรแกรมเมอร์ ทำแอป เล่าเรื่องเทค และชีวิตประจำวัน · รวมทุกช่องทางติดตามและติดต่อ">
+<meta property="og:url" content="https://your-domain.com/">
+<meta property="og:image" content="https://your-domain.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="apst.local · Aphisit">
+<meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="profile:username" content="apst.local">
+
+<!-- X / Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="apst.local · Aphisit">
+<meta name="twitter:description" content="โปรแกรมเมอร์ ทำแอป เล่าเรื่องเทค และชีวิตประจำวัน">
+<meta name="twitter:image" content="https://your-domain.com/og-image.png">
+
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="profile.jpg" as="image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://your-domain.com/",
+  "inLanguage": [
+    "th",
+    "en"
+  ],
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Aphisit",
+    "alternateName": "apst.local",
+    "jobTitle": "Developer",
+    "description": "โปรแกรมเมอร์ ทำแอป เล่าเรื่องเทค และชีวิตประจำวัน",
+    "image": "https://your-domain.com/profile.jpg",
+    "email": "mailto:Aphisit.thu@gmail.com",
+    "url": "https://your-domain.com/",
+    "sameAs": [
+      "https://www.tiktok.com/@apst.local",
+      "https://www.instagram.com/apst.local",
+      "https://www.facebook.com/share/1DFCV1BdbH/"
+    ]
+  }
+}
+</script>
+<style>
+/* Layout: one narrow column, monochrome, list of hairline-divided rows like a terminal directory listing */
+:root{
+  --bg:#FFFFFF; --ink:#111111; --sub:#6B6B6B; --line:#E6E6E6; --hover:#F5F5F5; --chip:#F2F2F2;
+  color-scheme:light;
+  --sans:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;padding-inline:16px}
+.wrap{max-width:440px;margin:0 auto;padding-block:40px 48px;display:flex;flex-direction:column;gap:28px}
+.top{display:flex;justify-content:flex-end}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.lang button{font:500 13px var(--mono);color:var(--sub);background:none;border:0;border-radius:999px;padding:4px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.lang button:focus-visible,.row:focus-visible,.copy:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.avatar{width:136px;height:136px;border-radius:12px;border:1px solid var(--ink);object-fit:cover}
+h1{margin:6px 0 0;font:500 22px var(--mono);letter-spacing:-.3px}
+.bio{margin:0;color:var(--sub);font-size:15px;max-width:32ch;text-wrap:balance}
+.group{display:flex;flex-direction:column}
+.label{font:500 11px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--sub);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none;transition:background .15s}
+a.row:hover{background:var(--hover)}
+.ico{width:22px;height:22px;flex:none}
+.ico svg{width:100%;height:100%;fill:var(--c,var(--ink))}
+.txt{display:flex;flex-direction:column;min-width:0;flex:1}
+.name{font-weight:500;font-size:16px}
+.handle{font:400 13px var(--mono);color:var(--sub);overflow-wrap:anywhere}
+.arrow{font:400 16px var(--mono);color:var(--sub);transition:transform .15s}
+a.row:hover .arrow{transform:translateX(3px)}
+.copy{font:500 12px var(--mono);color:var(--ink);background:var(--chip);border:0;border-radius:999px;padding:6px 12px;cursor:pointer}
+.ctas{display:flex;flex-direction:column;gap:10px}
+.cta{display:block;text-align:center;padding:15px 20px;border-radius:12px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;font-size:16px;transition:transform .15s,background .15s}
+.cta.primary{background:var(--ink);color:var(--bg)}
+a.cta:not(.primary):hover{background:var(--hover)}
+.cta:hover{transform:translateY(-1px)}
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+footer{text-align:center;font:400 12px var(--mono);color:var(--sub)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+body{margin:0}
+img{max-width:100%}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <div class="lang" role="group" aria-label="Language">
+      <button id="btn-th" type="button" data-lang="th" aria-pressed="true">TH</button>
+      <button id="btn-en" type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <header class="head">
+    <img class="avatar" src="profile.jpg" width="136" height="136" alt="Aphisit (apst.local) โปรไฟล์" fetchpriority="high">
+    <h1>apst.local</h1>
+    <p class="bio" data-th="โปรแกรมเมอร์ · ทำแอป เล่าเรื่องเทค และชีวิตประจำวัน" data-en="Developer · building apps, sharing tech and everyday life">โปรแกรมเมอร์ · ทำแอป เล่าเรื่องเทค และชีวิตประจำวัน</p>
+  </header>
+
+  <div class="ctas">
+    <a class="cta primary" href="https://line.me/ti/p/il5aFCqGP_" target="_blank" rel="noopener" data-th="ทักคุยงานทาง LINE" data-en="Let's talk on LINE">ทักคุยงานทาง LINE</a>
+    <a class="cta" href="mailto:Aphisit.thu@gmail.com" data-th="ส่งอีเมลหาผม" data-en="Send me an email">ส่งอีเมลหาผม</a>
+    <a class="cta" href="https://www.tiktok.com/@apst.local" target="_blank" rel="noopener" data-th="ดูคอนเทนต์ล่าสุดบน TikTok" data-en="Watch the latest on TikTok">ดูคอนเทนต์ล่าสุดบน TikTok</a>
+  </div>
+
+  <section class="group" aria-label="Social">
+    <div class="label" data-th="ติดตาม" data-en="Follow">ติดตาม</div>
+    <a class="row" href="https://www.tiktok.com/@apst.local" target="_blank" rel="noopener">
+      <span class="ico" style="--c:#000000"><svg viewBox="0 0 24 24"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.4 7.4 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg></span>
+      <span class="txt"><span class="name">TikTok</span><span class="handle">@apst.local</span></span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="row" href="https://www.instagram.com/apst.local" target="_blank" rel="noopener">
+      <span class="ico" style="--c:#E4405F"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-2.4.1-3.4 1.2-3.5 3.5C3.7 8.8 3.7 9.2 3.7 12s0 3.2.1 4.4c.1 2.3 1.2 3.4 3.5 3.5 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.4-.1 3.4-1.2 3.5-3.5.1-1.2.1-1.6.1-4.4s0-3.2-.1-4.4c-.1-2.3-1.2-3.4-3.5-3.5C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2zm5.1-9.4a1.2 1.2 0 1 1 0 2.3 1.2 1.2 0 0 1 0-2.3z"/></svg></span>
+      <span class="txt"><span class="name">Instagram</span><span class="handle">@apst.local</span></span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="row" href="https://www.facebook.com/share/1DFCV1BdbH/" target="_blank" rel="noopener">
+      <span class="ico" style="--c:#1877F2"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></span>
+      <span class="txt"><span class="name">Facebook</span><span class="handle" data-th="เพจ / โปรไฟล์" data-en="Page / profile">เพจ / โปรไฟล์</span></span>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <section class="group">
+    <div class="label" data-th="ติดต่อ" data-en="Contact">ติดต่อ</div>
+    <a class="row" href="https://line.me/ti/p/il5aFCqGP_" target="_blank" rel="noopener">
+      <span class="ico" style="--c:#06C755"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.5 2.5 2 6.1 2 10.6c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.5-1.7 2.2-3.3 2.2-5.1 0-4.5-4.5-8-10-8zm-3.8 10.7H6.3c-.3 0-.5-.2-.5-.5V8.9c0-.3.2-.5.5-.5s.5.2.5.5v3.3h1.4c.3 0 .5.2.5.5s-.2.5-.5.5zm2-.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5V8.9c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm4.6 0c0 .2-.1.4-.3.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.6v2.3c0 .3-.2.5-.5.5s-.5-.2-.5-.5V8.9c0-.2.1-.4.3-.5h.2c.2 0 .3.1.4.2l2 2.6V8.9c0-.3.2-.5.5-.5s.5.2.5.5v3.8zm3.1-2.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9h1.4c.3 0 .5.2.5.5s-.2.5-.5.5h-1.9c-.3 0-.5-.2-.5-.5V8.9c0-.3.2-.5.5-.5h1.9c.3 0 .5.2.5.5s-.2.5-.5.5h-1.4v.9h1.4z"/></svg></span>
+      <span class="txt"><span class="name">LINE</span><span class="handle" data-th="แอดเพื่อนคุยกัน" data-en="Add me on LINE">แอดเพื่อนคุยกัน</span></span>
+      <span class="arrow">→</span>
+    </a>
+    <a class="row" href="https://wa.me/66934358753" target="_blank" rel="noopener">
+      <span class="ico" style="--c:#25D366"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.4z"/></svg></span>
+      <span class="txt"><span class="name">WhatsApp</span><span class="handle" data-th="ทักแชทได้เลย" data-en="Chat with me">ทักแชทได้เลย</span></span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="row">
+      <span class="ico" style="--c:#EA4335"><svg viewBox="0 0 24 24"><path d="M3 5h18c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm1 2.4V17h16V7.4l-8 5.3-8-5.3zM5.4 7l6.6 4.4L18.6 7H5.4z"/></svg></span>
+      <span class="txt"><span class="name" data-th="อีเมล" data-en="Email">อีเมล</span><span class="handle" id="email">Aphisit.thu@gmail.com</span></span>
+      <button class="copy" id="copy-email" type="button" data-th="คัดลอก" data-en="Copy">คัดลอก</button>
+    </div>
+  </section>
+
+  <footer>© 2026 apst.local</footer>
+</main>
+
+<script>
+(function(){
+  var cur='th';
+  function setLang(l){
+    cur=l;
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-th]').forEach(function(el){el.textContent=el.getAttribute('data-'+l)});
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    try{localStorage.setItem('lang',l)}catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+  var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+  setLang(saved==='en'?'en':'th');
+
+  var btn=document.getElementById('copy-email');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('email').textContent;
+    function done(){btn.textContent=cur==='th'?'คัดลอกแล้ว':'Copied';setTimeout(function(){btn.textContent=btn.getAttribute('data-'+cur)},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,fallback)}else fallback();
+  });
+})();
+</script>
+</body>
+</html>
