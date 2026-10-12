@@ -1,35 +1,49 @@
-# apst.local · เว็บ ALL MY LINK
+# apst.cc · ALL MY LINK
 
-เว็บหน้าเดียว ไม่มี build ไม่ต้องลงอะไร อัปโหลดทั้งโฟลเดอร์นี้ขึ้นโฮสต์ได้เลย
+เว็บ link-in-bio หน้าเดียว + ระบบนับคนเข้าว่ามาจาก IG / Facebook / TikTok บน Cloudflare Pages
 
-## ก่อนขึ้นเว็บ: เปลี่ยนโดเมน 1 จุด
+```
+public/            ไฟล์หน้าเว็บ (index.html, รูป, sitemap, robots)
+functions/api/hit.js   รับข้อมูลคนเข้า/คนกด แล้วเก็บลง D1
+functions/stats.js     หน้าสรุปตัวเลข (ใส่รหัสก่อนดู)
+schema.sql             ตารางใน D1 (รันครั้งเดียว)
+```
 
-ในไฟล์ `index.html`, `robots.txt`, `sitemap.xml` มีคำว่า `https://apst.cc` (ตั้งไว้แล้ว)
-ให้ค้นหาแล้วแทนที่ด้วยโดเมนจริง (เช่น `https://apst.vercel.app` หรือโดเมนที่ซื้อเอง)
+## ขึ้นเว็บบน Cloudflare Pages
 
-## วิธีขึ้นเว็บฟรี (เลือกอันเดียว)
+1. Workers & Pages → Create → Pages → Connect to Git → เลือก `apst-links`
+2. Framework preset: **None** · Build command: **เว้นว่าง** · Build output directory: **`public`** → Save and Deploy
+3. โปรเจกต์ → Custom domains → เพิ่ม `apst.cc` (และ `www.apst.cc`)
 
-**Vercel (ง่ายสุด)**
-1. เข้า vercel.com ล็อกอินด้วย GitHub
-2. Add New → Project → ลากโฟลเดอร์ `site` ไปวาง หรือเชื่อม GitHub repo
-3. ได้ลิงก์ `xxx.vercel.app` เอาไปแทน `your-domain.com` แล้ว deploy ซ้ำ
+## เปิดระบบนับ lead (ทำครั้งเดียว)
 
-**Netlify** — app.netlify.com/drop ลากโฟลเดอร์ `site` ไปวาง จบ
+1. Workers & Pages → **D1 SQL Database** → Create → ตั้งชื่อ `apst-links`
+2. เปิด database → แท็บ Console → วางเนื้อหาไฟล์ `schema.sql` → Execute
+3. กลับไปโปรเจกต์ Pages → Settings → **Bindings** → Add → D1 database → Variable name `DB` → เลือก `apst-links`
+4. Settings → **Variables and Secrets** → Add → ชื่อ `STATS_KEY` แบบ Secret ใส่รหัสยาวๆ ที่เดายาก
+5. Deployments → Retry deployment (ให้ค่าใหม่มีผล)
 
-**GitHub Pages** — สร้าง repo `aphisit-ths.github.io` อัปไฟล์ทั้งหมดในโฟลเดอร์นี้ ได้เว็บที่ `https://aphisit-ths.github.io`
+ดูตัวเลขที่ `https://apst.cc/stats?key=รหัสที่ตั้ง`  (เปลี่ยนช่วงได้ 1 / 7 / 30 / 90 / 365 วัน)
 
-## หลังขึ้นเว็บ (ให้ Google เจอเร็วขึ้น)
+## ลิงก์ที่ต้องใส่ใน bio แต่ละช่อง
 
-1. Google Search Console → เพิ่มโดเมน → ส่ง `sitemap.xml`
-2. ทดสอบภาพตอนแชร์ลิงก์: developers.facebook.com/tools/debug
-3. ทดสอบ schema: search.google.com/test/rich-results
-4. เอาลิงก์ไปใส่ bio ทุกช่อง (TikTok, IG, FB) ยิ่งมีลิงก์ชี้เข้ามา Google ยิ่งเชื่อถือ
+| ที่ใส่ | ลิงก์ |
+|---|---|
+| Instagram bio | `https://apst.cc/?src=ig` |
+| Facebook | `https://apst.cc/?src=fb` |
+| TikTok bio | `https://apst.cc/?src=tt` |
+| LINE | `https://apst.cc/?src=line` |
 
-## มีอะไรใน SEO แล้วบ้าง
+ถึงไม่ใส่ `?src=` ระบบก็พยายามเดาจาก in-app browser ของ IG/FB/TikTok ให้ แต่ใส่ไว้แม่นกว่า
 
-- title / description ภาษาไทย มีคำว่า apst.local, Aphisit, โปรแกรมเมอร์, ทำแอป
-- canonical, robots, sitemap.xml
-- Open Graph + Twitter card พร้อมรูปแชร์ `og-image.png` (1200×630) ลิงก์ที่แชร์ใน LINE/FB จะขึ้นรูปนี้
-- Schema.org `ProfilePage` + `Person` ผูกกับ TikTok, IG, FB ผ่าน `sameAs` ช่วยให้ Google รู้ว่าทุกช่องเป็นคนเดียวกัน
-- favicon, apple-touch-icon, web manifest
-- รูปโปรไฟล์แยกไฟล์ มี width/height และ alt, เนื้อหาอยู่ใน HTML ตรงๆ (Google อ่านได้ไม่ต้องรัน JS)
+## นับยังไง
+
+- **คน (unique)** = เบราว์เซอร์ที่ไม่ซ้ำกัน (เก็บ id สุ่มไว้ในเครื่องคนเข้า) ถ้าคนเดียวเปิดจาก IG แอปกับ Safari จะนับเป็น 2
+- **คนที่กดลิงก์** = lead จริง เช่นกด "ทักคุยงานทาง LINE", WhatsApp, อีเมล
+- ไม่เก็บ IP ไม่ใช้ cookie ของบุคคลที่สาม ตัด bot/link preview ออก
+- ฟรีใน Cloudflare free plan (D1 ฟรี 5 ล้านแถวอ่าน/วัน 100,000 แถวเขียน/วัน)
+
+## SEO ที่มีแล้ว
+
+title/description ภาษาไทย, canonical `https://apst.cc/`, Open Graph + รูปแชร์ `og-image.png`, Schema.org Person/ProfilePage ผูก IG/FB/TikTok, sitemap.xml, robots.txt, favicon
+หลังขึ้นเว็บ: Google Search Console → เพิ่ม `apst.cc` → ส่ง `sitemap.xml`
