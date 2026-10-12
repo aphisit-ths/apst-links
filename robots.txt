@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apst-links.vercel.app/sitemap.xml
+Sitemap: https://apst.cc/sitemap.xml

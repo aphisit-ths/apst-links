@@ -4,7 +4,7 @@
 
 ## ก่อนขึ้นเว็บ: เปลี่ยนโดเมน 1 จุด
 
-ในไฟล์ `index.html`, `robots.txt`, `sitemap.xml` มีคำว่า `https://your-domain.com`
+ในไฟล์ `index.html`, `robots.txt`, `sitemap.xml` มีคำว่า `https://apst.cc` (ตั้งไว้แล้ว)
 ให้ค้นหาแล้วแทนที่ด้วยโดเมนจริง (เช่น `https://apst.vercel.app` หรือโดเมนที่ซื้อเอง)
 
 ## วิธีขึ้นเว็บฟรี (เลือกอันเดียว)
