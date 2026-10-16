@@ -235,12 +235,36 @@ img{max-width:100%}
   }
   umami(function(u){u.identify(vid(),{src:src});u.track()});
   document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a.row,a.cta,#copy-email');
+    var a=e.target.closest&&e.target.closest('a,button');
     if(!a)return;
+    if(a.matches('.lang button')){
+      umami(function(u){u.track('change-language',{language:a.dataset.lang,src:src})});
+      return;
+    }
     var t=a.id==='copy-email'?'email-copy':(a.querySelector('.name')?a.querySelector('.name').textContent:a.textContent).trim().toLowerCase();
     if(a.classList.contains('cta'))t='cta:'+(a.getAttribute('href')||'').replace(/^https?:\/\/(www\.)?/,'').split(/[/?]/)[0];
-    umami(function(u){u.track('click',{target:t.slice(0,48),src:src})});
+    var href=a.getAttribute('href')||'';
+    var platform=a.id==='copy-email'?'email-copy':
+      /^mailto:/i.test(href)?'email':
+      /instagram\.com\//i.test(href)?'instagram':
+      /facebook\.com\//i.test(href)?'facebook':
+      /tiktok\.com\//i.test(href)?'tiktok':
+      /line\.me\//i.test(href)?'line':
+      /wa\.me\//i.test(href)?'whatsapp':a.tagName==='BUTTON'?'button':'link';
+    umami(function(u){u.track('click-'+platform,{target:t.slice(0,48),placement:a.classList.contains('cta')?'cta':a.id==='copy-email'?'copy':a.classList.contains('row')?'row':'other',src:src})});
   });
+  var scrollMilestones={};
+  window.addEventListener('scroll',function(){
+    var height=document.documentElement.scrollHeight-window.innerHeight;
+    if(height<=0)return;
+    var depth=Math.min(100,Math.round(window.scrollY/height*100));
+    [25,50,75,100].forEach(function(percent){
+      if(depth>=percent&&!scrollMilestones[percent]){
+        scrollMilestones[percent]=true;
+        umami(function(u){u.track('scroll-'+percent,{src:src})});
+      }
+    });
+  },{passive:true});
 })();
 </script>
 </body>

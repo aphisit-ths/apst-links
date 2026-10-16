@@ -33,7 +33,11 @@ public/            ไฟล์หน้าเว็บ (index.html, รูป, 
 
 - การเปิดหน้าเว็บ และ ID สุ่มต่อเบราว์เซอร์ที่เก็บใน localStorage เพื่อระบุผู้เข้าชมเดิม
 - แหล่งที่มาจาก `src` / `utm_source`, in-app browser หรือ referrer
-- event `click` สำหรับปุ่ม CTA, แถวลิงก์ และปุ่มคัดลอกอีเมล พร้อม `target` และ `src`
+- event แยกตามปลายทาง เช่น `click-instagram`, `click-facebook`, `click-tiktok`, `click-line`, `click-whatsapp`, `click-email` และ `click-email-copy` พร้อม `target` และ `src` (ดูใน Events ของ Umami ส่วน `/` ใน Pages คือ pageview)
+- ทุกลิงก์และปุ่มส่ง event โดยแยกตำแหน่ง `placement` เป็น `cta`, `row`, `copy` หรือ `other`
+- เปลี่ยนภาษา: `change-language` พร้อม `language`
+- เลื่อนหน้า: `scroll-25`, `scroll-50`, `scroll-75`, `scroll-100` ครั้งเดียวต่อระดับต่อการเปิดหน้า (เฉพาะหน้าที่เลื่อนได้)
+- ปุ่มคัดลอกอีเมลนับการกด ไม่ได้ยืนยันว่าคัดลอกสำเร็จ
 - ปิด auto-track แล้วเรียก pageview เอง เพื่อหลีกเลี่ยงการนับซ้ำ
 - ส่งข้อมูลสถิติผ่าน Umami เท่านั้น ไม่มี API เก็บสถิติหรือฐานข้อมูลของเว็บเอง
 
