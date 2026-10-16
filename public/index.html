@@ -109,6 +109,9 @@ footer{text-align:center;font:400 12px var(--mono);color:var(--sub)}
 body{margin:0}
 img{max-width:100%}
 </style>
+<!-- Umami analytics. The page view is sent below once the visitor id is set, so auto-track is off.
+     data-domains keeps Pages previews and local copies out of the numbers. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="851a6c6e-3b05-4316-93e6-1b0d0c468ebf" data-domains="apst.cc,www.apst.cc" data-auto-track="false"></script>
 </head>
 <body>
 <main class="wrap">
@@ -232,12 +235,22 @@ img{max-width:100%}
     fetch('/api/hit',{method:'POST',headers:{'Content-Type':'application/json'},body:body,keepalive:true}).catch(function(){});
   }
   send('view');
+  /* Umami gets the same visitor id, so it can tell returning visitors apart */
+  function umami(fn){
+    try{
+      if(window.umami)return fn(window.umami);
+      var s=document.querySelector('script[src*="umami"]');
+      if(s)s.addEventListener('load',function(){if(window.umami)fn(window.umami)});
+    }catch(e){}
+  }
+  umami(function(u){u.identify(vid(),{src:src});u.track()});
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a.row,a.cta,#copy-email');
     if(!a)return;
     var t=a.id==='copy-email'?'email-copy':(a.querySelector('.name')?a.querySelector('.name').textContent:a.textContent).trim().toLowerCase();
     if(a.classList.contains('cta'))t='cta:'+(a.getAttribute('href')||'').replace(/^https?:\/\/(www\.)?/,'').split(/[/?]/)[0];
     send('click',t.slice(0,48));
+    umami(function(u){u.track('click',{target:t.slice(0,48),src:src})});
   });
 })();
 </script>
