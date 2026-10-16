@@ -199,7 +199,7 @@ img{max-width:100%}
 })();
 </script>
 <script>
-/* Lead source tracking: one anonymous id per browser, source from ?src= link, in-app browser or referrer */
+/* Umami tracking: anonymous visitor id and source attribution */
 (function(){
   function vid(){
     var k='apst_vid',v=null;
@@ -226,16 +226,6 @@ img{max-width:100%}
     return 'direct';
   }
   var src=source();
-  try{sessionStorage.setItem('apst_src',src)}catch(e){}
-  function send(type,target){
-    var body=JSON.stringify({vid:vid(),src:src,type:type,target:target||''});
-    try{
-      if(navigator.sendBeacon){navigator.sendBeacon('/api/hit',new Blob([body],{type:'application/json'}));return}
-    }catch(e){}
-    fetch('/api/hit',{method:'POST',headers:{'Content-Type':'application/json'},body:body,keepalive:true}).catch(function(){});
-  }
-  send('view');
-  /* Umami gets the same visitor id, so it can tell returning visitors apart */
   function umami(fn){
     try{
       if(window.umami)return fn(window.umami);
@@ -249,7 +239,6 @@ img{max-width:100%}
     if(!a)return;
     var t=a.id==='copy-email'?'email-copy':(a.querySelector('.name')?a.querySelector('.name').textContent:a.textContent).trim().toLowerCase();
     if(a.classList.contains('cta'))t='cta:'+(a.getAttribute('href')||'').replace(/^https?:\/\/(www\.)?/,'').split(/[/?]/)[0];
-    send('click',t.slice(0,48));
     umami(function(u){u.track('click',{target:t.slice(0,48),src:src})});
   });
 })();

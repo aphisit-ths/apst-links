@@ -1,12 +1,9 @@
 # apst.cc · ALL MY LINK
 
-เว็บ link-in-bio หน้าเดียว + ระบบนับคนเข้าว่ามาจาก IG / Facebook / TikTok บน Cloudflare Pages
+เว็บ link-in-bio หน้าเดียวบน Cloudflare Pages ใช้ Umami สำหรับสถิติคนเข้าและการคลิกลิงก์
 
 ```
 public/            ไฟล์หน้าเว็บ (index.html, รูป, sitemap, robots)
-functions/api/hit.js   รับข้อมูลคนเข้า/คนกด แล้วเก็บลง D1
-functions/stats.js     หน้าสรุปตัวเลข (ใส่รหัสก่อนดู)
-schema.sql             ตารางใน D1 (รันครั้งเดียว)
 ```
 
 ## ขึ้นเว็บบน Cloudflare Pages
@@ -15,15 +12,11 @@ schema.sql             ตารางใน D1 (รันครั้งเด�
 2. Framework preset: **None** · Build command: **เว้นว่าง** · Build output directory: **`public`** → Save and Deploy
 3. โปรเจกต์ → Custom domains → เพิ่ม `apst.cc` (และ `www.apst.cc`)
 
-## เปิดระบบนับ lead (ทำครั้งเดียว)
+## สถิติผ่าน Umami
 
-1. Workers & Pages → **D1 SQL Database** → Create → ตั้งชื่อ `apst-links`
-2. เปิด database → แท็บ Console → วางเนื้อหาไฟล์ `schema.sql` → Execute
-3. กลับไปโปรเจกต์ Pages → Settings → **Bindings** → Add → D1 database → Variable name `DB` → เลือก `apst-links`
-4. Settings → **Variables and Secrets** → Add → ชื่อ `STATS_KEY` แบบ Secret ใส่รหัสยาวๆ ที่เดายาก
-5. Deployments → Retry deployment (ให้ค่าใหม่มีผล)
-
-ดูตัวเลขที่ `https://apst.cc/stats?key=รหัสที่ตั้ง`  (เปลี่ยนช่วงได้ 1 / 7 / 30 / 90 / 365 วัน)
+ใช้ Umami Cloud ที่ตั้งค่าไว้ใน `public/index.html` สำหรับโดเมน `apst.cc` และ `www.apst.cc`
+ไม่ต้องตั้งค่า D1, binding `DB` หรือ `STATS_KEY` และไม่มีหน้า `/stats` แล้ว
+ดูสถิติใน dashboard ของ Umami
 
 ## ลิงก์ที่ต้องใส่ใน bio แต่ละช่อง
 
@@ -36,12 +29,13 @@ schema.sql             ตารางใน D1 (รันครั้งเด�
 
 ถึงไม่ใส่ `?src=` ระบบก็พยายามเดาจาก in-app browser ของ IG/FB/TikTok ให้ แต่ใส่ไว้แม่นกว่า
 
-## นับยังไง
+## เก็บสถิติอะไรบ้าง
 
-- **คน (unique)** = เบราว์เซอร์ที่ไม่ซ้ำกัน (เก็บ id สุ่มไว้ในเครื่องคนเข้า) ถ้าคนเดียวเปิดจาก IG แอปกับ Safari จะนับเป็น 2
-- **คนที่กดลิงก์** = lead จริง เช่นกด "ทักคุยงานทาง LINE", WhatsApp, อีเมล
-- ไม่เก็บ IP ไม่ใช้ cookie ของบุคคลที่สาม ตัด bot/link preview ออก
-- ฟรีใน Cloudflare free plan (D1 ฟรี 5 ล้านแถวอ่าน/วัน 100,000 แถวเขียน/วัน)
+- การเปิดหน้าเว็บ และ ID สุ่มต่อเบราว์เซอร์ที่เก็บใน localStorage เพื่อระบุผู้เข้าชมเดิม
+- แหล่งที่มาจาก `src` / `utm_source`, in-app browser หรือ referrer
+- event `click` สำหรับปุ่ม CTA, แถวลิงก์ และปุ่มคัดลอกอีเมล พร้อม `target` และ `src`
+- ปิด auto-track แล้วเรียก pageview เอง เพื่อหลีกเลี่ยงการนับซ้ำ
+- ส่งข้อมูลสถิติผ่าน Umami เท่านั้น ไม่มี API เก็บสถิติหรือฐานข้อมูลของเว็บเอง
 
 ## SEO ที่มีแล้ว
 
