@@ -1,12 +1,19 @@
 :root {
   color-scheme: light;
-  --paper: #f5f5ee;
-  --ink: #1a2b23;
-  --muted: #526255;
-  --line: #ccd4c7;
-  --deep: #16352a;
-  --lime: #dfff84;
-  --mint: #e6eedb;
+  /* Weri web color tokens from liff-weri/apps/web/app/globals.css. */
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --surface2: #f0f2f8;
+  --ink: #1c2333;
+  --ink2: #5b6478;
+  --line2: #dadeea;
+  --line3: #b9bfce;
+  --brand: #3b5bdb;
+  --brand-ink: #304cc5;
+  --brand-soft: #e8edff;
+  --brand-deep: #2b3480;
+  --tone-yellow: #fff1c7;
+  --off-bg: #dff4ea;
   --body: "IBM Plex Sans Thai", system-ui, sans-serif;
   --display: "Space Grotesk", var(--body);
 }
@@ -14,13 +21,13 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font: 400 16px/1.55 var(--body);
 }
 button { font: inherit; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid #36734e; outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--brand-ink); outline-offset: 4px; }
 .shell { width: min(100% - 36px, 960px); margin-inline: auto; }
 
 .top {
@@ -28,28 +35,28 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line2);
 }
 .site-name { font: 700 25px/1 var(--display); letter-spacing: -.055em; }
-.lang { display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 100px; padding: 3px; }
+.lang { display: flex; gap: 2px; border: 1px solid var(--line2); border-radius: 100px; padding: 3px; }
 .lang button {
   min-width: 42px;
   min-height: 36px;
   border: 0;
   border-radius: 100px;
   background: transparent;
-  color: var(--muted);
+  color: var(--ink2);
   cursor: pointer;
   font: 600 13px/1 var(--display);
 }
-.lang button[aria-pressed="true"] { background: var(--deep); color: var(--paper); }
+.lang button[aria-pressed="true"] { background: var(--brand-deep); color: var(--bg); }
 
 .layout { display: grid; gap: 20px; padding-block: 34px 26px; }
 .intro { padding-block: 4px 12px; }
 .identity { display: flex; align-items: center; gap: 13px; }
 .avatar { width: 64px; height: 64px; display: block; object-fit: cover; border-radius: 50%; }
 .person { display: block; font: 700 19px/1.25 var(--display); }
-.handle { display: block; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.handle { display: block; color: var(--ink2); font-size: 13px; overflow-wrap: anywhere; }
 h1 {
   margin: 20px 0 8px;
   max-width: 14ch;
@@ -58,7 +65,7 @@ h1 {
   text-wrap: balance;
 }
 html[lang="th"] h1 { max-width: none; letter-spacing: -.035em; }
-.bio { margin: 0; color: var(--muted); font-size: 17px; }
+.bio { margin: 0; color: var(--ink2); font-size: 17px; }
 
 .weri {
   min-height: 214px;
@@ -67,37 +74,37 @@ html[lang="th"] h1 { max-width: none; letter-spacing: -.035em; }
   overflow: hidden;
   display: flex;
   align-items: center;
-  background: var(--deep);
-  color: var(--paper);
+  background: var(--brand-deep);
+  color: var(--bg);
   border-radius: 22px;
   padding: clamp(22px, 4vw, 34px);
 }
 .weri-content { position: relative; z-index: 1; }
 .weri h2 { margin: 0; font: 700 clamp(3.2rem, 8vw, 5rem)/.96 var(--display); letter-spacing: -.085em; }
-.weri h2 span { color: var(--lime); }
-.weri p { width: max-content; max-width: min(100%, 25ch); margin: 10px 0 17px; color: #e2ecd9; }
+.weri h2 span { color: var(--tone-yellow); }
+.weri p { width: max-content; max-width: min(100%, 25ch); margin: 10px 0 17px; color: var(--brand-soft); }
 .calendar {
   position: absolute;
   right: -24px;
   bottom: -36px;
   width: clamp(135px, 34%, 240px);
-  background: #284c3b;
-  border: 1px solid #71927a;
+  background: var(--brand-ink);
+  border: 1px solid var(--line3);
   border-radius: 19px;
   padding: 15px;
   transform: rotate(-13deg);
 }
-.calendar-top { display: flex; gap: 6px; border-bottom: 1px solid #71927a; padding-bottom: 10px; margin-bottom: 10px; }
-.calendar-top i { width: 7px; height: 7px; border-radius: 50%; background: #a9c8ae; }
+.calendar-top { display: flex; gap: 6px; border-bottom: 1px solid var(--line3); padding-bottom: 10px; margin-bottom: 10px; }
+.calendar-top i { width: 7px; height: 7px; border-radius: 50%; background: var(--off-bg); }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-.calendar-grid i { aspect-ratio: 1; border-radius: 3px; background: #426854; }
-.calendar-grid i:nth-child(5n + 2) { background: var(--lime); }
-.calendar-grid i:nth-child(7n + 4) { background: #a9c8ae; }
+.calendar-grid i { aspect-ratio: 1; border-radius: 3px; background: var(--brand-deep); }
+.calendar-grid i:nth-child(5n + 2) { background: var(--tone-yellow); }
+.calendar-grid i:nth-child(7n + 4) { background: var(--off-bg); }
 
-.work { background: var(--mint); border-radius: 22px; padding: clamp(21px, 4vw, 32px); }
+.work { background: var(--brand-soft); border-radius: 22px; padding: clamp(21px, 4vw, 32px); }
 .section-title { font-weight: 700; font-size: 25px; margin: 0; }
 .services { list-style: none; padding: 0; margin: 10px 0 18px; }
-.services li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.services li { padding: 6px 0; border-bottom: 1px solid var(--line2); }
 .work-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .cta {
   display: inline-flex;
@@ -109,41 +116,41 @@ html[lang="th"] h1 { max-width: none; letter-spacing: -.035em; }
   font-weight: 600;
   text-decoration: none;
 }
-.cta.primary { background: var(--deep); color: var(--paper); }
-.cta.primary:hover { background: #285441; }
-.weri .cta { background: var(--lime); color: var(--ink); }
-.weri .cta:hover { background: #ecffa9; }
-.weri .cta:focus-visible { outline-color: var(--lime); }
-.cta.secondary { border: 1px solid #879985; }
-.cta.secondary:hover, .copy:hover { background: #d8e5cf; }
+.cta.primary { background: var(--brand); color: var(--surface); }
+.cta.primary:hover { background: var(--brand-ink); }
+.weri .cta { background: var(--surface); color: var(--brand-deep); }
+.weri .cta:hover { background: var(--brand-soft); }
+.weri .cta:focus-visible { outline-color: var(--tone-yellow); }
+.cta.secondary { border: 1px solid var(--line3); }
+.cta.secondary:hover, .copy:hover { background: var(--surface2); }
 
 .directory { display: grid; gap: 20px; min-width: 0; }
-.label { margin: 0; padding: 0 0 7px; border-bottom: 1px solid var(--line); font-size: 17px; font-weight: 700; }
+.label { margin: 0; padding: 0 0 7px; border-bottom: 1px solid var(--line2); font-size: 17px; font-weight: 700; }
 .row {
   display: flex;
   align-items: center;
   min-height: 58px;
   gap: 12px;
   padding: 8px 3px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line2);
   text-decoration: none;
 }
-a.row:hover { background: var(--mint); }
+a.row:hover { background: var(--brand-soft); }
 .ico { width: 20px; height: 20px; flex: none; }
-.ico svg { display: block; width: 100%; height: 100%; fill: var(--deep); }
+.ico svg { display: block; width: 100%; height: 100%; fill: var(--brand-deep); }
 .txt { min-width: 0; flex: 1; }
 .name { display: block; font-weight: 600; }
 .copy {
   min-height: 44px;
   cursor: pointer;
   background: transparent;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line2);
   border-radius: 8px;
-  color: var(--deep);
+  color: var(--brand-deep);
   padding: 4px 10px;
   font-size: 13px;
 }
-footer { color: var(--muted); padding-block: 0 26px; font-size: 13px; }
+footer { color: var(--ink2); padding-block: 0 26px; font-size: 13px; }
 
 @media (min-width: 720px) {
   .layout { grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr); gap: 26px; padding-block: 49px 30px; }
