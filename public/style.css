@@ -1,17 +1,17 @@
 :root {
   color-scheme: light;
-  /* Weri web color tokens from liff-weri/apps/web/app/globals.css. */
-  --bg: #f5f6fb;
+  /* Neutral grey palette (was Weri blue tokens). */
+  --bg: #f4f4f4;
   --surface: #ffffff;
-  --surface2: #f0f2f8;
-  --ink: #1c2333;
-  --ink2: #5b6478;
-  --line2: #dadeea;
-  --line3: #b9bfce;
-  --brand: #3b5bdb;
-  --brand-ink: #304cc5;
-  --brand-soft: #e8edff;
-  --brand-deep: #2b3480;
+  --surface2: #ededed;
+  --ink: #1a1a1a;
+  --ink2: #5c5c5c;
+  --line2: #dddddd;
+  --line3: #bdbdbd;
+  --brand: #333333;
+  --brand-ink: #222222;
+  --brand-soft: #e6e6e6;
+  --brand-deep: #1a1a1a;
   --body: "IBM Plex Sans Thai", system-ui, sans-serif;
   --display: "Space Grotesk", var(--body);
 }
